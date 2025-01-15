@@ -13,6 +13,7 @@ local DropDown = Instance.new("TextButton")
 local NPCList = Instance.new("ScrollingFrame")
 local StartButton = Instance.new("TextButton")
 local StopButton = Instance.new("TextButton")
+local CloseButton = Instance.new("TextButton")
 
 -- GUI Properties
 ScreenGui.Parent = game.CoreGui
@@ -44,6 +45,12 @@ StopButton.Text = "Stop Auto-Farm"
 StopButton.Size = UDim2.new(1, -10, 0, 30)
 StopButton.Position = UDim2.new(0, 5, 0, 250)
 StopButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+
+CloseButton.Parent = Frame
+CloseButton.Text = "Close GUI"
+CloseButton.Size = UDim2.new(1, -10, 0, 30)
+CloseButton.Position = UDim2.new(0, 5, 0, 290)
+CloseButton.BackgroundColor3 = Color3.new(0.8, 0.2, 0.2)
 
 -- Populate NPC List
 for _, npc in pairs(workspace:GetChildren()) do
@@ -113,4 +120,9 @@ end)
 StopButton.MouseButton1Click:Connect(function()
     autoFarmEnabled = false
     print("Auto-Farm stopped.")
+end)
+
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+    print("GUI Closed.")
 end)
