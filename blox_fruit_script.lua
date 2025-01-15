@@ -21,36 +21,42 @@ Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
 Frame.Size = UDim2.new(0, 200, 0, 300)
 Frame.Position = UDim2.new(0.5, -100, 0.5, -150)
+Frame.AnchorPoint = Vector2.new(0.5, 0.5) -- Center alignment for better mobile support
 
 DropDown.Parent = Frame
 DropDown.Text = "Select NPC"
 DropDown.Size = UDim2.new(1, -10, 0, 30)
 DropDown.Position = UDim2.new(0, 5, 0, 10)
 DropDown.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+DropDown.TextScaled = true -- Scale text for readability on small screens
 
 NPCList.Parent = Frame
 NPCList.Size = UDim2.new(1, -10, 0, 150)
 NPCList.Position = UDim2.new(0, 5, 0, 50)
 NPCList.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
 NPCList.CanvasSize = UDim2.new(0, 0, 1, 0)
+NPCList.ScrollBarThickness = 8 -- Adjust scrollbar size for mobile usability
 
 StartButton.Parent = Frame
 StartButton.Text = "Start Auto-Farm"
 StartButton.Size = UDim2.new(1, -10, 0, 30)
 StartButton.Position = UDim2.new(0, 5, 0, 210)
 StartButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+StartButton.TextScaled = true
 
 StopButton.Parent = Frame
 StopButton.Text = "Stop Auto-Farm"
 StopButton.Size = UDim2.new(1, -10, 0, 30)
 StopButton.Position = UDim2.new(0, 5, 0, 250)
 StopButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+StopButton.TextScaled = true
 
 CloseButton.Parent = Frame
 CloseButton.Text = "Close GUI"
 CloseButton.Size = UDim2.new(1, -10, 0, 30)
 CloseButton.Position = UDim2.new(0, 5, 0, 290)
 CloseButton.BackgroundColor3 = Color3.new(0.8, 0.2, 0.2)
+CloseButton.TextScaled = true
 
 -- Populate NPC List
 for _, npc in pairs(workspace:GetChildren()) do
@@ -60,6 +66,7 @@ for _, npc in pairs(workspace:GetChildren()) do
         NPCButton.Text = npc.Name
         NPCButton.Size = UDim2.new(1, -10, 0, 30)
         NPCButton.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4)
+        NPCButton.TextScaled = true -- Scale text for mobile screens
         NPCButton.MouseButton1Click:Connect(function()
             selectedNPC = npc.Name
             DropDown.Text = "Selected: " .. npc.Name
